@@ -1,0 +1,66 @@
+회사원 정보를 저장하는 DB를 만들고
+JAVA에서 조건을 걸고 조회하겠다.
+----------------------------------------------------------
+1. 목록 구상
+이름,나이,회사,직급,연봉,연차 (회사원)
+----------------------------------------------------------
+2. 테이블 설계
+create table employee(
+name varchar(20),
+age int,
+company varchar(20),
+position varchar(20),
+salary int,
+year int );
+----------------------------------------------------------
+3. 데이터 삽입
+insert into employee values('이재용',45,'삼성','부사장',9000,15);
+insert into employee values('이민호',40,'삼성','부장',6000,10);
+insert into employee values('정채연',28,'삼성','사원',4000,1);
+insert into employee values('안은진',26,'삼성','사원',3500,1);
+insert into employee values('장그래',33,'삼성','대리',4500,5);
+
+insert into employee values('구본무',48,'LG','사장',9500,20);
+insert into employee values('송중기',38,'LG','과장',6000,12);
+insert into employee values('구본형',43,'LG','부장',6500,15);
+insert into employee values('구자철',33,'LG','대리',5500,6);
+
+insert into employee values('최태원',50,'SK','사장',8000,25);
+insert into employee values('송혜교',34,'SK','대리',4500,8);
+insert into employee values('김준현',43,'SK','부장',6500,13);
+insert into employee values('김지민',33,'SK','대리',4000,7);
+
+insert into employee values('신동빈',53,'롯데','사장',7500,13);
+insert into employee values('신동주',55,'롯데','부사장',7000,12);
+insert into employee values('신영자',50,'롯데','부장',5500,13);
+insert into employee values('신동엽',45,'롯데','과장',7500,15);
+----------------------------------------------------------
+4. 질의할 SQL 예시
+select * from employee; (모두 조회)
+select * from employee where name = '신동엽'; (이름 신동엽)
+select * from employee where age >= 40; (나이 40살 이상)
+select * from employee where company = '삼성'; (삼성 사원)
+select * from employee where position = '대리'; (직급 대리)
+select * from employee where salary >= 3000; (연봉 3000만원 이상)
+select * from employee where year > 5; (근무 5년차 초과)
+select * from employee where year <= 5; (근무 5년차 이하)  
+select * from employee where company='삼성' and class='대리'; (삼성에 다니면서 대리인 사람)
+select * from employee order by salary desc; (내림차순) (연봉 내림차순)
+select * from employee order by salary asc; (오름차순) (연봉 오름차순)
+
+select distinct company from employee; //회사 중복없이
+
+select position company from employee; //직급 중복없이
+
+update employee set salary = 4000 where name = '안은진'; 
+//업데이트
+
+delete from employee where name = '신동엽' ;
+
+
+insert into employee(name,age,company,position,salary,year) values(?,?,?,?,?,?) //데이터 추가 SQL
+delete FROM employee where name =? //데이터 삭제
+//등등 기본 폼을 변형하여 사용하면 됩니다.
+
+
+
